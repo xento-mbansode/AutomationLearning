@@ -57,7 +57,7 @@ public class WebFormSubmit {
            e.printStackTrace();
          }
         finally {
-          // driver.quit();
+           driver.quit();
            System.out.println("Program ended");
        }
 

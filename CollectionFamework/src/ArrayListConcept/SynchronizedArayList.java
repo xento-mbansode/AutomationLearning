@@ -1,7 +1,5 @@
 package ArrayListConcept;
 
-import kotlin.reflect.jvm.internal.impl.renderer.KeywordStringsGenerated;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;

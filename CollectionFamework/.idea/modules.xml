@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CollectionFamework.iml" filepath="$PROJECT_DIR$/CollectionFamework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../Projects/AutomationLearning/CollectionFamework/CollectionFamework.iml" filepath="$PROJECT_DIR$/../../Projects/AutomationLearning/CollectionFamework/CollectionFamework.iml" />
     </modules>
   </component>
 </project>
