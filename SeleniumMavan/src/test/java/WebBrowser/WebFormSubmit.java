@@ -1,6 +1,7 @@
 package WebBrowser;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
@@ -29,21 +30,34 @@ public class WebFormSubmit {
            System.out.println("Clicked on Male combo button");
            driver.findElement(By.cssSelector("#userNumber")).sendKeys("0123456789");
            System.out.println("Entered the mobile number");
-//           driver.findElement(By.cssSelector("#dateOfBirthInput")).clear();
-          // driver.findElement(By.cssSelector("#dateOfBirthInput")).sendKeys("14 Jan 1985");
+//            driver.findElement(By.cssSelector("#dateOfBirthInput")).clear();
+//                      driver.findElement(By.cssSelector("#dateOfBirthInput")).sendKeys("14 Jan 1985");
            String subject="Test subject for automation program";
            //driver.findElement(By.cssSelector("div.subjects-auto-complete__placeholder.css-1wa3eu0-placeholder")).sendKeys(subject);
            driver.findElement(By.cssSelector("#hobbiesWrapper > div.col-md-9.col-sm-12 > div:nth-child(2) > label")).click();
            System.out.println("Hobby as reading is selected");
            driver.findElement(By.cssSelector("#currentAddress")).sendKeys("Manjri, Shewalewadi Road Pune -411027");
+
+           System.out.println("Closing the adds");
+           driver.findElement(By.cssSelector("#close-fixedban")).click();
+
            //creating select method for single select dropdown
-           Select stateSelect=new Select(driver.findElement(By.xpath("//*[@id=\"state\"]/div/div[1]/div[1]")));
-           stateSelect.selectByVisibleText("Haryana");
-          // System.out.println(stateSelect.getAllSelectedOptions());
-           //creating select method for single select dropdown
-           Select citySelect=new Select(driver.findElement(By.cssSelector("//*[@id=\"city\"]/div/div[1]/div[1]")));
-           stateSelect.selectByVisibleText("Karnal");
-         //  System.out.println(citySelect.getAllSelectedOptions());
+           WebElement dropdown= driver.findElement(By.cssSelector("div#state div[class$='placeholder']"));
+           dropdown.click();
+           Thread.sleep(2000);
+           WebElement options=driver.findElement(By.xpath("//*[contains(text(), 'Uttar Pradesh')]"));
+           options.click();
+           Thread.sleep(2000);
+           System.out.println("State selected");
+
+           WebElement citydropdown=driver.findElement(By.cssSelector("div#city div[class$='placeholder']"));
+           citydropdown.click();
+           Thread.sleep(2000);
+           WebElement cityoptions=driver.findElement(By.xpath("//*[contains(text(),'Agra')]"));
+           cityoptions.click();
+           Thread.sleep(2000);
+           System.out.println("City selected");
+
            driver.findElement(By.cssSelector("#submit")).submit();
            String successMessageText="Thanks for submitting the form";
            if(driver.getPageSource().contains(successMessageText)){
@@ -57,7 +71,7 @@ public class WebFormSubmit {
            e.printStackTrace();
          }
         finally {
-           driver.quit();
+          // driver.quit();
            System.out.println("Program ended");
        }
 
