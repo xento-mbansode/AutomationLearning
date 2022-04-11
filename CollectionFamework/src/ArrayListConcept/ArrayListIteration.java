@@ -20,7 +20,7 @@ public class ArrayListIteration {
         //for each loop
         for(String s: studentList){
             System.out.println(s);
-        }
+          }
 
         System.out.println("--------------");
         // streams lambda
@@ -34,9 +34,10 @@ public class ArrayListIteration {
 
         Iterator<String> it=studentList.iterator();
         while(it.hasNext()){
+
                         //System.out.println(it.hasNext());
             System.out.println(it.next());
-        }
+           }
 
     }
 }

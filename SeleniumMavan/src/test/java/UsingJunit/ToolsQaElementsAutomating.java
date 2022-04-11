@@ -6,16 +6,16 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
 import javax.sound.midi.Soundbank;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -27,6 +27,26 @@ public class ToolsQaElementsAutomating {
         driver.findElement(By.cssSelector("#close-fixedban")).click();
         System.out.println("add closed");
     }
+    public static void verifyLinks(String linkUrl) {
+        try {
+            URL url = new URL(linkUrl);
+
+            //Now we will be creating url connection and getting the response code
+            HttpURLConnection httpURLConnect = (HttpURLConnection) url.openConnection();
+            httpURLConnect.setConnectTimeout(5000);
+            httpURLConnect.connect();
+            if (httpURLConnect.getResponseCode() >= 400) {
+                System.out.println("HTTP STATUS - " + httpURLConnect.getResponseMessage() + "is a broken link");
+            }
+
+            //Fetching and Printing the response code obtained
+            else {
+                System.out.println("HTTP STATUS - " + httpURLConnect.getResponseMessage());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 
     @Before
@@ -36,6 +56,7 @@ public class ToolsQaElementsAutomating {
         driver=new ChromeDriver();
         driver.manage().window().maximize();
         driver.get(url);
+        System.out.println("-----------Test Started------------");
         driver.findElement(By.cssSelector("#app > div > div > div.home-body > div > div:nth-child(1) > div > div.card-body")).click();
         System.out.println(driver.findElement(By.cssSelector("#app > div > div > div.row > div:nth-child(1) > div > div > div:nth-child(1) > span > div > div.header-text")).isDisplayed());
     }
@@ -180,13 +201,70 @@ public class ToolsQaElementsAutomating {
         act.contextClick(rClick).perform();
         System.out.println(driver.findElement(By.cssSelector("#rightClickMessage")).isDisplayed());
         System.out.println(driver.findElement(By.cssSelector("#rightClickMessage")).getText());
-
     }
+    @Test
+    public void testLinks() throws Exception{
+        driver.findElement(By.xpath("//span[contains(text(),'Links')]")).click();
+        if(driver.findElement(By.cssSelector("#close-fixedban")).isDisplayed()){
+            this.closeAdds();
+        }
+        List<WebElement> pageLinks=driver.findElements(By.id("linkWrapper"));
+        if(pageLinks.size() !=0){
+            for(WebElement link:pageLinks){
+                System.out.println(link.getText());
+            }
+        }
+        String mainWindowHandle= driver.getWindowHandle();
+        System.out.println(driver.getTitle() + " is the Current page");
+        driver.findElement(By.cssSelector("#simpleLink")).click();
+        Thread.sleep(1000);
+        Set<String> allWindowHandles=driver.getWindowHandles();
+        Iterator<String> it=allWindowHandles.iterator();
+        while(it.hasNext()) {
+            String childWindow = it.next();
+            if (!mainWindowHandle.equalsIgnoreCase(childWindow)) {
+                System.out.println(driver.getTitle() + " is the Current page");
+                driver.switchTo().window(childWindow);
+                System.out.println(driver.getCurrentUrl());
+                System.out.println(driver.getTitle());
+            }
+        }
+        driver.switchTo().window(mainWindowHandle);
+        driver.getTitle();
+       // driver.findElement(By.cssSelector("#dynamicLink"));
+    }
+    @Test
+    public void testBrokenLinkAndImage(){
+        driver.findElement(By.xpath("//span[contains(text(),'Broken Links - Images')]")).click();
+        if(driver.findElement(By.cssSelector("#close-fixedban")).isDisplayed()){
+            this.closeAdds();
+        }
+       List<WebElement> images=driver.findElements(By.tagName("img"));
+        System.out.println("Total number of Images on the page are: " +images.size());
 
-    @After
+        for(int i=0;i<images.size();i++){
+            WebElement image=images.get(i);
+            String imageUrl=image.getAttribute("src");
+            System.out.println(" URL of Image " +(i+1) + " is: " +imageUrl);
+            verifyLinks(imageUrl);
+
+            try{
+                boolean imageDisplayed=(Boolean)((JavascriptExecutor)driver).executeScript("return (typeof arguments[0].naturalWidth !=\"undefined\" && arguments[0].naturalWidth > 0);", image);
+                if(imageDisplayed){
+                    System.out.println("--------DISPLAY -OK---------");
+                }else {
+                    System.out.println("--------DISPLAY -BROKEN---------");
+                }
+            }catch (Exception e){
+                System.out.println("Error Occured");
+            }
+        }
+    }
+       @After
     public void endTest(){
         driver.quit();
-        System.out.println("Test ended");
+        System.out.println("----------------------------");
+        System.out.println("Test has ended");
     }
 
 }

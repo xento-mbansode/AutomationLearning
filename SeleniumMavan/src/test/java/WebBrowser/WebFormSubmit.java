@@ -33,7 +33,7 @@ public class WebFormSubmit {
 //            driver.findElement(By.cssSelector("#dateOfBirthInput")).clear();
 //                      driver.findElement(By.cssSelector("#dateOfBirthInput")).sendKeys("14 Jan 1985");
            String subject="Test subject for automation program";
-           //driver.findElement(By.cssSelector("div.subjects-auto-complete__placeholder.css-1wa3eu0-placeholder")).sendKeys(subject);
+           driver.findElement(By.cssSelector("div.subjects-auto-complete__placeholder.css-1wa3eu0-placeholder")).sendKeys(subject);
            driver.findElement(By.cssSelector("#hobbiesWrapper > div.col-md-9.col-sm-12 > div:nth-child(2) > label")).click();
            System.out.println("Hobby as reading is selected");
            driver.findElement(By.cssSelector("#currentAddress")).sendKeys("Manjri, Shewalewadi Road Pune -411027");
