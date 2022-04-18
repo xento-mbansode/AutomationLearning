@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="52f5b541-c664-4568-89a9-0b1cb8538727" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/TestingFiles/TestPropertiesFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TestingFiles/testing.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Inheritance/src/com/ATMTransaction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SeleniumMavan/src/test/java/UsingJunit/ToolsQAInteractionAutomation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/CollectionFamework.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/KotlinJavaRuntime.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SeleniumMavan/src/test/java/UsingJunit/ToolsQaWidgetsAutomation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SeleniumMavan/src/test/java/UsingJunit/ToolsQaWidgetsAutomation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SeleniumMavan/target/test-classes/UsingJunit/ToolsQaWidgetsAutomation.class" beforeDir="false" afterPath="$PROJECT_DIR$/../SeleniumMavan/target/test-classes/UsingJunit/ToolsQaWidgetsAutomation.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="27jYYpmrXkL4Vdrird29aZyyl6g" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="flattenModules" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="RunManager" selected="Application.TestPropertiesFile">
+    <configuration name="ArrayListDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ArrayListConcept.ArrayListDemo" />
+      <module name="CollectionFamework" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ArrayListConcept.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SortAndStar" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ArrayListConcept.SortAndStar" />
+      <module name="CollectionFamework" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ArrayListConcept.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestPropertiesFile" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TestingFiles.TestPropertiesFile" />
+      <module name="CollectionFamework" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="TestingFiles.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.TestPropertiesFile" />
+        <item itemvalue="Application.SortAndStar" />
+        <item itemvalue="Application.ArrayListDemo" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="52f5b541-c664-4568-89a9-0b1cb8538727" name="Changes" comment="" />
+      <created>1649835014716</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1649835014716</updated>
+    </task>
+    <servers />
+  </component>
+</project>

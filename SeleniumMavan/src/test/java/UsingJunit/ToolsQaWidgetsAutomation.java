@@ -7,6 +7,9 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
+import javax.lang.model.element.Element;
+import java.util.List;
+
 public class ToolsQaWidgetsAutomation {
     WebDriver driver;
     //close the add
@@ -128,6 +131,51 @@ public class ToolsQaWidgetsAutomation {
     }
 
     @Test
+    public void testProgressBar() throws Exception{
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,250)", "");
+        driver.findElement(By.xpath("//*[@id='item-4']/span[contains(text(),'Progress Bar')]")).click();
+        if(driver.findElement(By.cssSelector("#close-fixedban")).isDisplayed()) {
+            this.closeAdds();
+        }
+        System.out.println(driver.findElement(By.className("main-header")).getText());
+        driver.findElement(By.id("startStopButton")).click();
+        Thread.sleep(2000);
+//        String value=driver.findElement(By.xpath("//*[@id='progressBar']/div")).getAttribute("aria-valuenow");
+//        if(value.equals("30")) {
+//            driver.findElement(By.id("startStopButton")).click();
+//        }
+        driver.findElement(By.id("startStopButton")).click();
+        System.out.println(driver.findElement(By.xpath("//*[@id='progressBar']/div")).getAttribute("aria-valuenow"));
+    }
+
+    @Test
+    public void testTabs() throws Exception {
+        String ids="";
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,250)", "");
+        driver.findElement(By.xpath("//*[@id='item-5']/span[contains(text(),'Tabs')]")).click();
+        if (driver.findElement(By.cssSelector("#close-fixedban")).isDisplayed()) {
+            this.closeAdds();
+        }
+        System.out.println(driver.findElement(By.className("main-header")).getText());
+
+        List<WebElement> tabNames=driver.findElements(By.cssSelector("#tabsContainer > nav>a"));
+        for (WebElement tab: tabNames){
+            System.out.println("Clicked on "+tab.getText());
+
+            ids=tab.getAttribute("id");
+         //   System.out.println(driver.findElement(By.xpath("/*[@id="+ids+"]/p/text()")).getText());
+          //  System.out.println(driver.findElement(By.xpath("/*[@id=\"ids\"]/p/text()")).getText());
+
+            if(tab.getText().equals("More")){
+                System.out.println("More is not clickable");
+                break;
+            }
+            tab.click();
+        }
+    }
+    @Test
     public void voidTestToolTip()throws Exception{
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,250)", "");
@@ -147,12 +195,26 @@ public class ToolsQaWidgetsAutomation {
 
 
     }
-
-
+    @Test
+    public void voidTestMenu()throws Exception{
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,300)", "");
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//*[@id='item-7']/span[contains(text(),'Menu')]")).click();
+        if(driver.findElement(By.cssSelector("#close-fixedban")).isDisplayed()) {
+            this.closeAdds();
+        }
+        Thread.sleep(1000);
+        System.out.println(driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[1]/div")).getText());
+        List<WebElement> menuNames=driver.findElements(By.id("nav"));
+        for (WebElement menu: menuNames) {
+            System.out.println(menu.getText());
+            }
+    }
 
     @After
     public void endTest(){
-        //driver.quit();
+        driver.quit();
         System.out.println("----------------------------");
         System.out.println("Test has ended");
     }
